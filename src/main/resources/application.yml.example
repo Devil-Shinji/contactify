@@ -1,0 +1,27 @@
+server:
+  port: {{port}}
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://{{host}}:{{port}}/{{schema}}
+    username: {{username}}
+    password: {{password}}
+  jpa:
+    hibernate.ddl-auto: none
+    open-in-view: false
+    # The SQL dialect makes Hibernate generate better SQL for the chosen database
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+    show-sql: true
+  flyway:
+    enabled: true
+    url: "${spring.datasource.url}"
+    password: "${spring.datasource.password}"
+    user: "${spring.datasource.username}"
+    create-schemas: false
+    locations: "classpath:db/migration"
+auth:
+  protected-resources: ["/api/**"]
