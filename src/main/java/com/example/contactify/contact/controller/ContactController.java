@@ -23,6 +23,11 @@ public class ContactController {
         return contactService.save(dto);
     }
 
+    @PutMapping("/{id}")
+    public ContactDetailDto update(@PathVariable Long id, @RequestBody ContactEditDto dto) {
+        return contactService.update(id, dto);
+    }
+
     @GetMapping
     public Iterable<ContactListDto> getAll() { return contactService.getAll(); }
 

@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import static jakarta.persistence.FetchType.LAZY;
+import static jakarta.persistence.FetchType.EAGER;
 
 @Getter
 @Setter
@@ -34,7 +34,7 @@ public class Contact {
     @NotNull
     private String phoneNumber;
 
-    @ManyToOne(optional = false, fetch = LAZY)
+    @ManyToOne(optional = false, fetch = EAGER)
     @JoinColumn(nullable = false)
     @ToString.Exclude
     private User user;

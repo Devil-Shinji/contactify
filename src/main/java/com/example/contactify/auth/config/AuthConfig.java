@@ -40,6 +40,7 @@ public class AuthConfig {
                         .anyRequest()
                         .permitAll())
                 .httpBasic(Customizer.withDefaults())
+                .cors(Customizer.withDefaults())
                 .build();
     }
 }

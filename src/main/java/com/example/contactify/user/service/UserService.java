@@ -7,12 +7,12 @@ import com.example.contactify.user.entity.User;
 import com.example.contactify.user.mapper.UserMapper;
 import com.example.contactify.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -38,8 +38,8 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<UserDetailDto> findByUsername(String username) {
-        return userRepository.findByUsername(username).map(userMapper::toDetailDto);
+    public UserDetailDto findByUsername(String username) {
+        return userRepository.findByUsername(username).map(userMapper::toDetailDto).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
     public List<UserListDto> getAll() {

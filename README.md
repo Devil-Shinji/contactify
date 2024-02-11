@@ -7,19 +7,25 @@
 # System Structure
 
 - [Backend](src/)
-- [Frontend](TODO)
+- [Frontend](frontend/)
 - [Database](https://www.postgresql.org/)
 
 ---
 
 # Introduction
 
-This repository hosts a minimalistic backend application for serving user data and contact data related to users through REST API in JSON format.
-This repository is made to work with [frontend](TODO) application to show a MVP with minimal functionality
+This repository hosts a minimalistic backend and frontend application for serving user data and contact data related to users through REST API in JSON format.
+This repository is made to work with [frontend](frontend/) application to show a MVP with minimal functionality
 
 ---
 
-# API Documentation
+# Backend
+
+Written in Java with Spring Boot
+
+---
+
+## API Documentation
 
 Possible API endpoints are following:
 
@@ -37,24 +43,36 @@ Possible API endpoints are following:
   - DELETE `/api/users/{{id}}` -> Delete single user
 - Contacts:
     - GET `/api/contacts` -> Get all contacts
-    - GET `/api/contacts/{{id}}` -> Get single contacts
-    - POST `/api/contacts` -> Create single contacts
+    - GET `/api/contacts/{{id}}` -> Get single contact
+    - POST `/api/contacts` -> Create single contact
       - example body: ``` {
         "realName": "string",
         "codeName": "string",
         "phoneNumber": "string",
         "userId": {{id}}
         } ```
-    - DELETE `/api/contacts/{{id}}` -> Delete single contacts
+    - DELETE `/api/contacts/{{id}}` -> Delete single contact
 
 ---
 
-# Setup
+## Setup
 
 - Create an `application.yml` file in `src/main/resources` based on [example file](src/main/resources/application.yml.example)
 - Configure PostgreSQL database connection if not done yet during `application.yml` file creation
 - Run `./gradlew build` to build a jar file for the application
 - Run `java -jar build/libs/contactify-0.0.1-SNAPSHOT.jar` to run from generated `.jar` file, otherwise use `./gradlew bootRun` to build and run application in one command
 - Done! Backend application will listen on your defined port at `http://localhost:{{port}}`!
+
+---
+
+# Frontend
+
+Written in TypeScript with React framework
+
+---
+
+## Setup
+
+- 
 
 ---

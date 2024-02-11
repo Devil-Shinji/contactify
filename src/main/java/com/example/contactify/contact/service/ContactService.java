@@ -7,6 +7,7 @@ import com.example.contactify.contact.entity.Contact;
 import com.example.contactify.contact.mapper.ContactMapper;
 import com.example.contactify.contact.repository.ContactRepository;
 import com.example.contactify.user.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +44,23 @@ public class ContactService {
         contact = contactRepository.save(contact);
 
         return contactMapper.toDetailDto(contact);
+    }
+
+    public ContactDetailDto update(Long id, ContactEditDto dto) {
+        Contact dbContact = contactRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Contact with id " + id + " not found"));
+        Contact changedContact = contactMapper.toEntity(dto);
+
+        dbContact.setUser(
+                userRepository.findById(dto.getUserId()).orElseThrow(
+                        () -> new RuntimeException("User not found with id: " + dto.getUserId()))
+        );
+        dbContact.setCodeName(changedContact.getCodeName());
+        dbContact.setPhoneNumber(changedContact.getPhoneNumber());
+        dbContact.setRealName(changedContact.getRealName());
+
+        dbContact = contactRepository.save(dbContact);
+
+        return contactMapper.toDetailDto(dbContact);
     }
 
     public List<ContactListDto> getAll() {

@@ -14,7 +14,6 @@ import java.io.Serializable;
  */
 @Value
 public class UserEditDto implements Serializable {
-    Long id;
     String firstName;
     String lastName;
     @NotNull
