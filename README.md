@@ -19,6 +19,17 @@ This repository is made to work with [frontend](frontend/) application to show a
 
 ---
 
+# Access
+
+If the project is running, the application requires a login which is:
+
+```
+username: test_user
+password: ud8kakoo7quaetae0Afai2shaeph6u
+```
+
+---
+
 # Backend
 
 Written in Java with Spring Boot
