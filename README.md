@@ -73,6 +73,9 @@ Written in TypeScript with React framework
 
 ## Setup
 
-- 
+- Create a .env file in [frontend](frontend/) directory using [.env.example](frontend/.env.example)
+- Run `npm install`
+- Run `npm start`
+- Done! Frontend application will listen by default on `http://127.0.0.1:3000`!
 
 ---
